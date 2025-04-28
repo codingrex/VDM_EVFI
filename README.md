@@ -94,15 +94,16 @@ Inside the valid.sh, there are some important configurations worth attention.
 ```
 
 2. Caluculating Metrics
-First change path in **cal_metrics.sh**
-```
-python cal_metric.py \
-    --test_metric_folder PATH_TO_OUTPUT_DIR_rescale_factor_2.0_overlapping_ratio_0.1_t0_0_M_2_s_churn_0.5/metrics 
-```
-Then
-```
-sh cal_metrics.sh
-```
+
+    First change path in **cal_metrics.sh**
+    ```
+    python cal_metric.py \
+        --test_metric_folder PATH_TO_OUTPUT_DIR_rescale_factor_2.0_overlapping_ratio_0.1_t0_0_M_2_s_churn_0.5/metrics 
+    ```
+    Then
+    ```
+    sh cal_metrics.sh
+    ```
 
 
 
