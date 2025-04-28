@@ -5,6 +5,10 @@
 \[[Paper](https://arxiv.org/abs/2412.07761)\] 
 
 
+
+![teaser.gif](./assets/HTML_Teaser.gif)
+
+
 ## Installation
 
 Create an conda environment
