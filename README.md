@@ -69,7 +69,7 @@ Inside the valid_video.sh, there are some important configurations worth attenti
 ```
 
 
-## Calculate Metrics
+## Calculating Metrics
 ### Reproducing Metrics in the Paper:
 1. Running the inference code with metric calculcation
 * As noted in the paper, we apply VAE encoding/decoding to both the model outputs and ground truths to eliminate non-essential effects, such as output tonemapping and noise differences, introduced by the frozen VAE from the pre-trained Video Diffusion Models during metric calculation.
