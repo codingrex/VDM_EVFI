@@ -25,7 +25,9 @@ Create an conda environment
 pip install torch torchvision torchaudio
 ```
 
-2. Installing Diffusers
+2. Installing Diffusers (Custom Version)
+
+    Please be sure to build from source our custom version of diffusers library.
 ```
 cd diffusers/
 pip install accelerate
@@ -43,7 +45,7 @@ pip install -r requirements.txt
     Trained on the BS-ERGB dataset only. The 5frames.zip files are used for metric calculation and can also be used to generate videos. The 13frames.zip files are fine-tuned for inserting 11 frames for video interpolation.
 
     * Google Drive: \[[Models (Google Drive)](https://drive.google.com/drive/folders/1qvIamYuOFxIVI6-i3N4umJ_MHHKnYxAJ?usp=drive_link)\] 
-    * HuggingFace: \[[5 Frames Model](https://huggingface.co/jxAIbot/VDM_EVFI)\], \[[13 Frames Model](https://huggingface.co/jxAIbot/VDM_EVFI_VIDEO)\] 
+    * Hugging Face: \[[5 Frames Model](https://huggingface.co/jxAIbot/VDM_EVFI)\], \[[13 Frames Model](https://huggingface.co/jxAIbot/VDM_EVFI_VIDEO)\] 
 
 2. Example Data:
 
@@ -51,7 +53,7 @@ pip install -r requirements.txt
     * Google Drive: \[[Example Data (Google Drive)](https://drive.google.com/drive/folders/1YbtXSGH2-x_Kuce4EGhGyeByVzxOPAfb?usp=drive_link)\] 
 
 
-## Run Inference Code
+## Running the Inference Code
 We provide a script to generate interpolated videos with 11 inserted frames. You can choose to use 5frames.zip (for the same setup as videos generated in the website) or 13frames.zip checkpoints. 13frames.zip checkpoints are slightly better. 
 ```
 cd scripts/
