@@ -43,7 +43,7 @@ pip install -r requirements.txt
     Trained on the BS-ERGB dataset only. The 5frames.zip files are used for metric calculation and can also be used to generate videos. The 13frames.zip files are fine-tuned for inserting 11 frames for video interpolation.
 
     * Google Drive: \[[Models (Google Drive)](https://drive.google.com/drive/folders/1qvIamYuOFxIVI6-i3N4umJ_MHHKnYxAJ?usp=drive_link)\] 
-    * HuggingFace: **To-do**
+    * HuggingFace: \[[5 Frames Model](https://huggingface.co/jxAIbot/VDM_EVFI)\], \[[13 Frames Model](https://huggingface.co/jxAIbot/VDM_EVFI_VIDEO)\] 
 
 2. Example Data:
 
