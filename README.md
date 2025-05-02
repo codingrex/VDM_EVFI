@@ -39,12 +39,6 @@ cd ..
 pip install -r requirements.txt
 ```
 
-4. Cloning the event_utils repository
-```
-cd scripts/src/utils/
-git clone https://github.com/TimoStoff/event_utils.git
-```
-
 ## Model Checkpoints & Example Data
 1. Model Checkpoints: 
 
