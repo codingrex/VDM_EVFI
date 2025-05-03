@@ -33,7 +33,7 @@ cd diffusers/
 pip install accelerate
 pip install -e ".[torch]"
 ```
-3. Installing the rest of packages
+3. Installing the rest of the packages
 ```
 cd ..
 pip install -r requirements.txt
@@ -54,7 +54,7 @@ pip install -r requirements.txt
 
 
 ## Running the Inference Code
-We provide a script to generate interpolated videos with 11 inserted frames. You can choose to use 5frames.zip (for the same setup as videos generated in the website) or 13frames.zip checkpoints. 13frames.zip checkpoints are slightly better. 
+We provide a script to generate interpolated videos with 11 inserted frames. You can choose to use 5frames.zip (for the same setup as videos generated on the website) or 13frames.zip checkpoints. 13frames.zip checkpoints are slightly better. 
 ```
 cd scripts/
 sh valid_video.sh
@@ -77,7 +77,7 @@ Inside the valid_video.sh, there are some important configurations worth attenti
 
 ## Calculating Metrics
 ### Reproducing Metrics in the Paper:
-1. Running the inference code with metric calculcation
+1. Running the inference code with metric calculation
 * As noted in the paper, we apply VAE encoding/decoding to both the model outputs and ground truths to eliminate non-essential effects, such as output tonemapping and noise differences, introduced by the frozen VAE from the pre-trained Video Diffusion Models during metric calculation.
 * Use checkpoint from 5frames.zip
 ```
@@ -99,7 +99,7 @@ Inside the valid.sh, there are some important configurations worth attention.
  --rescale_factor=UPSAMPLING_FACTOR \
 ```
 
-2. Caluculating Metrics
+2. Calculating Metrics
 
     First change path in **cal_metrics.sh**
     ```
@@ -114,7 +114,7 @@ Inside the valid.sh, there are some important configurations worth attention.
 
 
 ## Dataset Format
-We assume the same dataset format as BS-ERGB dataset as following.
+We assume the same dataset format as BS-ERGB dataset as follows.
 ```
 ├── Clear-Motion
     ├── sequence_0001
@@ -129,7 +129,7 @@ We assume the same dataset format as BS-ERGB dataset as following.
 
 
 ## To-do Plans
-We plan to do following soon:
+We plan to do the following soon:
 * The release of Training Code 
 * The release of Clear-Motion test sequences
 
