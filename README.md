@@ -112,6 +112,44 @@ Inside the valid.sh, there are some important configurations worth attention.
     ```
 
 
+## Training
+As explained in our paper, our model is trained solely on the BS-ERGB dataset and tested on all other datasets without any finetuning (i.e., zero-shot evaluation).
+
+1. To speed up training, we pre-processed the BS-ERGB dataset using the following code.
+```
+sh process_bsergb.sh
+```
+
+Set '--data_path' to the BS-ERGB directory and '--save_path' to the location where you want to save the processed outputs.
+```
+--data_path='/datasets/bs_ergb/' \
+--save_path='/99_BSERGB_MStack/' \
+```
+
+2. Run the training code. Our setup assumes an effective batch size of 64, achieved using 4 A6000 Ada GPUs (50GB) with a per-GPU batch size of 1 and gradient accumulation of 16. You can adjust these settings based on your hardware configuration. Set --train_data_path and --valid_path1 to the previously saved location of the processed BS-ERGB dataset, and --output_dir to the directory where you want to save the trained model.
+
+```
+accelerate launch --multi_gpu --num_processes 4 train.py \
+    --pretrained_model_name_or_path="stabilityai/stable-video-diffusion-img2vid" \
+    --output_dir="/99_Release/train_bsergb" \
+    --per_gpu_batch_size=1 --gradient_accumulation_steps=16 \
+    --num_train_epochs=600 \
+    --width=512 \
+    --height=320 \
+    --checkpointing_steps=500 --checkpoints_total_limit=1 \
+    --learning_rate=5e-5 --lr_warmup_steps=0 \
+    --seed=123 \
+    --mixed_precision="fp16" \
+    --validation_steps=200 \
+    --num_frames=5 \
+    --num_workers=4 \
+    --enable_xformers_memory_efficient_attention \
+    --resume_from_checkpoint="latest" \
+    --train_data_path="99_BSERGB_MStack/" \
+    --valid_path1='99_BSERGB_MStack/3_TRAINING/horse_04/image/' \
+    --valid_path1_idx=23
+```
+
 
 ## Dataset Format
 We assume the same dataset format as BS-ERGB dataset as following.
@@ -130,9 +168,21 @@ We assume the same dataset format as BS-ERGB dataset as following.
 
 ## To-do Plans
 We plan to do following soon:
-* The release of Training Code 
+* The release of Training Code (✅ Done)
 * The release of Clear-Motion test sequences
 
 
 ## Contact
 If you have any questions or are interested in our research, please feel free to contact Jingxi Chen: ianchen@umd.edu
+
+## Citation
+If you find our code or paper useful for your projects or research, please consider citing our paper:
+```
+@inproceedings{chen2025repurposing,
+  title={Repurposing pre-trained video diffusion models for event-based video interpolation},
+  author={Chen, Jingxi and Feng, Brandon Y and Cai, Haoming and Wang, Tianfu and Burner, Levi and Yuan, Dehao and Fermuller, Cornelia and Metzler, Christopher A and Aloimonos, Yiannis},
+  booktitle={Proceedings of the Computer Vision and Pattern Recognition Conference},
+  pages={12456--12466},
+  year={2025}
+}
+```
