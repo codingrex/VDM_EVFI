@@ -294,6 +294,9 @@ def get_video(folder_path, idx, num_frames, width, height):
     for i, frame_name in enumerate(selected_frames):
         frame_path = os.path.join(folder_path, frame_name)
         with Image.open(frame_path) as img:
+
+            if img.mode != 'RGB':
+                img = img.convert('RGB')
       
             img_resized = img.resize((width, height))
 

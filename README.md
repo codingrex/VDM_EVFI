@@ -80,6 +80,7 @@ Inside the valid_video.sh, there are some important configurations worth attenti
 1. Running the inference code with metric calculcation
 * As noted in the paper, we apply VAE encoding/decoding to both the model outputs and ground truths to eliminate non-essential effects, such as output tonemapping and noise differences, introduced by the frozen VAE from the pre-trained Video Diffusion Models during metric calculation.
 * Use checkpoint from 5frames.zip
+
 ```
 cd scripts/
 sh valid.sh
@@ -99,7 +100,24 @@ Inside the valid.sh, there are some important configurations worth attention.
  --rescale_factor=UPSAMPLING_FACTOR \
 ```
 
+#### Inference on HQF dataset:
+Here is an example of running the model on a dataset other than BS-ERGB, such as HQF (which contains grayscale frames).
+
+```
+cd scripts/
+sh valid_HQF.sh
+```
+The key argument changes are:
+```
+--event_scale=1 \ Downscaling factor of x ,y for events
+--width=240 \
+--height=180 \
+--rescale_factor=3 \
+```
+
 2. Caluculating Metrics
+* In our paper, to handle input frames that are not divisible by 8, we use \[["pad_to_multiple_of_8_pil"](https://github.com/codingrex/VDM_EVFI/blob/main/scripts/src/pipelines/pipeline_stable_video_diffusion_FullControlnet_MStack_timereversal.py#L56)\] to pad them accordingly and then resize to upsampled size.  However, in the released code, for simplicity and ease of use in other projects, we resize the input to the nearest multiple of 8 and upsampled size. This may cause slight differences from the metric numbers reported in the paper.
+
 
     First change path in **cal_metrics.sh**
     ```

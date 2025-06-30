@@ -798,8 +798,8 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
 
             # For originial frames, always upsample to 2x
 
-            org_frame_height_upsample= int(height * 2)
-            org_frame_width_upsample= int(width * 2)
+            org_frame_height_upsample= int(height * rescale_factor)
+            org_frame_width_upsample= int(width * rescale_factor)
 
             org_frames= [org_frames[i].resize((org_frame_width_upsample, org_frame_height_upsample), Image.Resampling.LANCZOS) for i in range(len(org_frames))]
             
